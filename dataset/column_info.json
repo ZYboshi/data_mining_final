@@ -1,0 +1,138 @@
+{
+  "dataset_shape": {
+    "rows": 45211,
+    "columns": 17
+  },
+  "columns": {
+    "age": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "job": {
+      "type": "categorical",
+      "values": [
+        "management",
+        "technician",
+        "entrepreneur",
+        "blue-collar",
+        "unknown",
+        "retired",
+        "admin.",
+        "services",
+        "self-employed",
+        "unemployed",
+        "housemaid",
+        "student"
+      ],
+      "count": 12
+    },
+    "marital": {
+      "type": "categorical",
+      "values": [
+        "married",
+        "single",
+        "divorced"
+      ],
+      "count": 3
+    },
+    "education": {
+      "type": "categorical",
+      "values": [
+        "tertiary",
+        "secondary",
+        "unknown",
+        "primary"
+      ],
+      "count": 4
+    },
+    "default": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "count": 2
+    },
+    "balance": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "housing": {
+      "type": "categorical",
+      "values": [
+        "yes",
+        "no"
+      ],
+      "count": 2
+    },
+    "loan": {
+      "type": "categorical",
+      "values": [
+        "no",
+        "yes"
+      ],
+      "count": 2
+    },
+    "contact": {
+      "type": "categorical",
+      "values": [
+        "unknown",
+        "cellular",
+        "telephone"
+      ],
+      "count": 3
+    },
+    "day": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "month": {
+      "type": "categorical",
+      "values": [
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "oct",
+        "nov",
+        "dec",
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "sep"
+      ],
+      "count": 12
+    },
+    "duration": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "campaign": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "pdays": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "previous": {
+      "type": "numerical",
+      "values": "numerical values"
+    },
+    "poutcome": {
+      "type": "categorical",
+      "values": [
+        "unknown",
+        "failure",
+        "other",
+        "success"
+      ],
+      "count": 4
+    },
+    "deposit": {
+      "type": "numerical",
+      "values": "numerical values"
+    }
+  }
+}

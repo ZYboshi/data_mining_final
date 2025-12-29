@@ -1,0 +1,126 @@
+{
+  "job": {
+    "classes": [
+      "admin.",
+      "blue-collar",
+      "entrepreneur",
+      "housemaid",
+      "management",
+      "retired",
+      "self-employed",
+      "services",
+      "student",
+      "technician",
+      "unemployed"
+    ],
+    "indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ]
+  },
+  "marital": {
+    "classes": [
+      "divorced",
+      "married",
+      "single"
+    ],
+    "indices": [
+      0,
+      1,
+      2
+    ]
+  },
+  "education": {
+    "classes": [
+      "primary",
+      "secondary",
+      "tertiary"
+    ],
+    "indices": [
+      0,
+      1,
+      2
+    ]
+  },
+  "default": {
+    "classes": [
+      "no",
+      "yes"
+    ],
+    "indices": [
+      0,
+      1
+    ]
+  },
+  "housing": {
+    "classes": [
+      "no",
+      "yes"
+    ],
+    "indices": [
+      0,
+      1
+    ]
+  },
+  "loan": {
+    "classes": [
+      "no",
+      "yes"
+    ],
+    "indices": [
+      0,
+      1
+    ]
+  },
+  "contact": {
+    "classes": [
+      "cellular",
+      "telephone",
+      "unknown"
+    ],
+    "indices": [
+      0,
+      1,
+      2
+    ]
+  },
+  "month": {
+    "classes": [
+      "apr",
+      "aug",
+      "dec",
+      "feb",
+      "jan",
+      "jul",
+      "jun",
+      "mar",
+      "may",
+      "nov",
+      "oct",
+      "sep"
+    ],
+    "indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ]
+  }
+}
