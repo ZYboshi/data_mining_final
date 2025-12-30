@@ -480,11 +480,11 @@ def main():
     generate_column_info(data, save_path="./dataset/column_info_aftermissing.json")
     save_data(data, './dataset/bank_marketing_aftermissing.csv')
 
-    # # 步骤6：标签编码
-    # print("\n步骤6: 标签编码...")
-    # data, label_encoders = simple_label_encoding(data)  # 现在会保存到dataset文件夹
+    # 步骤6：标签编码
+    print("\n步骤6: 标签编码...")
+    data, label_encoders = simple_label_encoding(data)  # 现在会保存到dataset文件夹
     
-    # print("\n🎉 数据处理管道完成！")
+    print("\n🎉 数据处理管道完成！")
     
 
     

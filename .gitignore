@@ -1,0 +1,10 @@
+# Ignore dataset, model_checkpoint, and preprocess_dataset directories and their contents
+
+# Ignore everything in the dataset directory
+dataset/
+
+# Ignore everything in the model_checkpoint directory
+model_checkpoint/
+
+# Ignore everything in the preprocess_dataset directory
+preprocess_dataset/
