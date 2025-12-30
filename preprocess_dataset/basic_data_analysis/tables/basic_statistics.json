@@ -1,0 +1,73 @@
+{
+  "dataset_info": {
+    "samples": 45211,
+    "features": 17,
+    "columns": [
+      "age",
+      "job",
+      "marital",
+      "education",
+      "default",
+      "balance",
+      "housing",
+      "loan",
+      "contact",
+      "day",
+      "month",
+      "duration",
+      "campaign",
+      "pdays",
+      "previous",
+      "poutcome",
+      "deposit"
+    ]
+  },
+  "data_type_distribution": {
+    "numeric": {
+      "count": 8,
+      "percentage": 47.1,
+      "features": [
+        "age",
+        "balance",
+        "day",
+        "duration",
+        "campaign",
+        "pdays",
+        "previous",
+        "deposit"
+      ]
+    },
+    "categorical": {
+      "count": 9,
+      "percentage": 52.9,
+      "features": [
+        "job",
+        "marital",
+        "education",
+        "default",
+        "housing",
+        "loan",
+        "contact",
+        "month",
+        "poutcome"
+      ]
+    }
+  },
+  "target_info": {
+    "column_name": "deposit",
+    "data_type": "int64",
+    "imbalance_ratio": 7.55
+  },
+  "target_distribution": {
+    "1": {
+      "count": 39922,
+      "percentage": 88.3,
+      "label": "1"
+    },
+    "2": {
+      "count": 5289,
+      "percentage": 11.7,
+      "label": "2"
+    }
+  }
+}

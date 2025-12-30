@@ -1,0 +1,30 @@
+数据集基础统计分析报告
+========================================
+
+一、数据集基本信息
+------------------
+- 总样本数: 45,211
+- 总特征数: 17
+- 数值型特征: 8个
+- 类别型特征: 9个
+
+二、目标变量信息
+---------------
+- 目标变量: deposit
+  - 1: 39,922 个 (88.3%)
+  - 2: 5,289 个 (11.7%)
+- 类别不平衡比例: 7.55:1
+
+三、结果文件
+-----------
+所有分析结果保存在: ./preprocess_dataset/basic_data_analysis
+
+├── figures/
+│   ├── feature_type_distribution.png    # 特征类型分布图
+│   └── target_variable_distribution.png  # 目标变量分布图
+└── tables/
+    ├── basic_statistics.json            # 基础统计信息
+    ├── numeric_features_statistics.csv   # 数值特征统计
+    └── categorical_features_statistics.csv # 类别特征统计
+
+分析时间: 2025-12-29 21:46:58

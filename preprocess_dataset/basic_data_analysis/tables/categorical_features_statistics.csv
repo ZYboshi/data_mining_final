@@ -1,0 +1,10 @@
+feature,unique_values,missing,missing_pct,most_common,most_common_count,most_common_pct
+job,12,0,0.0,blue-collar,9732,21.53
+marital,3,0,0.0,married,27214,60.19
+education,4,0,0.0,secondary,23202,51.32
+default,2,0,0.0,no,44396,98.2
+housing,2,0,0.0,yes,25130,55.58
+loan,2,0,0.0,no,37967,83.98
+contact,3,0,0.0,cellular,29285,64.77
+month,12,0,0.0,may,13766,30.45
+poutcome,4,0,0.0,unknown,36959,81.75

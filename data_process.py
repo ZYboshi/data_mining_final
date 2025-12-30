@@ -419,7 +419,36 @@ def decode_columns(data, label_encoders):
     
     return decoded_data
 
-
+def save_data(data, save_path, file_format='csv'):
+    """
+    保存数据到指定位置
+    
+    参数:
+    data: pandas DataFrame，要保存的数据
+    save_path: str，保存文件的完整路径（包括文件名）
+    file_format: str，文件格式，支持 'csv', 'excel', 'pickle'，默认为 'csv'
+    """
+    try:
+        if file_format == 'csv':
+            # 保存为CSV格式
+            data.to_csv(save_path, index=False)
+            print(f"数据已保存到: {save_path}")
+            
+        elif file_format == 'excel':
+            # 保存为Excel格式
+            data.to_excel(save_path, index=False)
+            print(f"数据已保存到: {save_path}")
+            
+        elif file_format == 'pickle':
+            # 保存为pickle格式（保留所有Pandas数据类型）
+            data.to_pickle(save_path)
+            print(f"数据已保存到: {save_path}")
+            
+        else:
+            print(f"不支持的文件格式: {file_format}")
+            
+    except Exception as e:
+        print(f"保存数据时出错: {str(e)}")
 def main():
     """
     主函数：执行完整数据处理流程
@@ -429,34 +458,38 @@ def main():
     data_path = './dataset/bank_marketing.csv'
     data = load_and_rename_data(data_path)
     
-    # 步骤2：数据探索
-    print("\n步骤2: 数据探索...")
-    explore_data(data)
+    #步骤1.1：保存重命名数据
+    save_data(data, './preprocess_dataset/bank_marketing_renamed.csv')
+
+
+    # # 步骤2：数据探索
+    # print("\n步骤2: 数据探索...")
+    # explore_data(data)
     
-    # 步骤3：生成列信息
-    print("\n步骤3: 生成列信息...")
-    generate_column_info(data)
+    # # 步骤3：生成列信息
+    # print("\n步骤3: 生成列信息...")
+    # generate_column_info(data)
     
-    # 步骤4：缺失值分析
-    print("\n步骤4: 缺失值处理...")
-    analyze_missing_data(data)
+    # # 步骤4：缺失值分析
+    # print("\n步骤4: 缺失值处理...")
+    # analyze_missing_data(data)
     
-    # 步骤5：缺失值处理
-    print("\n步骤5: 缺失值处理...")
-    data = handle_missing_values(data)
-    generate_column_info(data, save_path="./dataset/column_info_aftermissing.json")
+    # # 步骤5：缺失值处理
+    # print("\n步骤5: 缺失值处理...")
+    # data = handle_missing_values(data)
+    # generate_column_info(data, save_path="./dataset/column_info_aftermissing.json")
     
-    # 步骤6：标签编码
-    print("\n步骤6: 标签编码...")
-    data, label_encoders = simple_label_encoding(data)  # 现在会保存到dataset文件夹
+    # # 步骤6：标签编码
+    # print("\n步骤6: 标签编码...")
+    # data, label_encoders = simple_label_encoding(data)  # 现在会保存到dataset文件夹
     
-    print("\n🎉 数据处理管道完成！")
+    # print("\n🎉 数据处理管道完成！")
     
 
     
 
 
-    
+
 
 def run_full_pipeline(include_download=False):
     """
