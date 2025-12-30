@@ -1,0 +1,305 @@
+{
+  "processing_steps": {
+    "age_business_rule": {
+      "type": "business_rule",
+      "condition": "age between 15 and 100",
+      "records_removed": 0
+    },
+    "balance_business_rule": {
+      "type": "business_rule",
+      "condition": "balance between -100,000 and 1,000,000",
+      "records_removed": 0
+    },
+    "duration_business_rule": {
+      "type": "business_rule",
+      "condition": "duration >= 0",
+      "records_removed": 0
+    },
+    "campaign_business_rule": {
+      "type": "business_rule",
+      "condition": "campaign > 0",
+      "records_removed": 0
+    },
+    "pdays_business_rule": {
+      "type": "business_rule",
+      "condition": "pdays >= -1",
+      "records_removed": 0
+    },
+    "previous_business_rule": {
+      "type": "business_rule",
+      "condition": "previous >= 0",
+      "records_removed": 0
+    },
+    "day_business_rule": {
+      "type": "business_rule",
+      "condition": "day between 1 and 31",
+      "records_removed": 0
+    },
+    "balance_winsorization": {
+      "type": "winsorization",
+      "lower_bound": -627.78,
+      "upper_bound": 13159.119999999995,
+      "records_affected": 900
+    },
+    "duration_winsorization": {
+      "type": "winsorization",
+      "lower_bound": 11.0,
+      "upper_bound": 1270.5599999999977,
+      "records_affected": 866
+    },
+    "campaign_winsorization": {
+      "type": "winsorization",
+      "lower_bound": 1.0,
+      "upper_bound": 16.0,
+      "records_affected": 448
+    },
+    "pdays_winsorization": {
+      "type": "winsorization",
+      "lower_bound": -1.0,
+      "upper_bound": 370.0,
+      "records_affected": 382
+    },
+    "previous_winsorization": {
+      "type": "winsorization",
+      "lower_bound": 0.0,
+      "upper_bound": 9.0,
+      "records_affected": 361
+    }
+  },
+  "summary": {
+    "original_rows": 44923,
+    "original_columns": 16,
+    "cleaned_rows": 44923,
+    "cleaned_columns": 16,
+    "rows_removed": 0,
+    "retention_rate": 100.0,
+    "removal_rate": 0.0
+  },
+  "detailed_stats": {},
+  "target_variable": {
+    "unique_values": [
+      1,
+      2
+    ],
+    "value_counts": {
+      "1": 39668,
+      "2": 5255
+    }
+  },
+  "categorical_check": {
+    "job": {
+      "expected_values": [
+        "management",
+        "technician",
+        "entrepreneur",
+        "blue-collar",
+        "retired",
+        "admin.",
+        "services",
+        "self-employed",
+        "unemployed",
+        "housemaid",
+        "student"
+      ],
+      "actual_values": [
+        "management",
+        "technician",
+        "entrepreneur",
+        "blue-collar",
+        "retired",
+        "admin.",
+        "services",
+        "self-employed",
+        "unemployed",
+        "housemaid",
+        "student"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "marital": {
+      "expected_values": [
+        "married",
+        "single",
+        "divorced"
+      ],
+      "actual_values": [
+        "married",
+        "single",
+        "divorced"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "education": {
+      "expected_values": [
+        "tertiary",
+        "secondary",
+        "primary"
+      ],
+      "actual_values": [
+        "tertiary",
+        "secondary",
+        "primary"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "default": {
+      "expected_values": [
+        "no",
+        "yes"
+      ],
+      "actual_values": [
+        "no",
+        "yes"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "housing": {
+      "expected_values": [
+        "yes",
+        "no"
+      ],
+      "actual_values": [
+        "yes",
+        "no"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "loan": {
+      "expected_values": [
+        "no",
+        "yes"
+      ],
+      "actual_values": [
+        "no",
+        "yes"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "contact": {
+      "expected_values": [
+        "unknown",
+        "cellular",
+        "telephone"
+      ],
+      "actual_values": [
+        "unknown",
+        "cellular",
+        "telephone"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    },
+    "month": {
+      "expected_values": [
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "oct",
+        "nov",
+        "dec",
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "sep"
+      ],
+      "actual_values": [
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "oct",
+        "nov",
+        "dec",
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "sep"
+      ],
+      "unexpected_values": [],
+      "has_unexpected": false
+    }
+  },
+  "descriptive_statistics": {
+    "age": {
+      "mean": 40.89352892727556,
+      "std": 10.604398567302285,
+      "min": 18.0,
+      "25%": 33.0,
+      "50%": 39.0,
+      "75%": 48.0,
+      "max": 95.0
+    },
+    "balance": {
+      "mean": 1275.4310709436145,
+      "std": 2246.9713866681295,
+      "min": -627.78,
+      "25%": 72.0,
+      "50%": 447.0,
+      "75%": 1421.0,
+      "max": 13159.119999999995
+    },
+    "day": {
+      "mean": 15.81388153061906,
+      "std": 8.320040415411631,
+      "min": 1.0,
+      "25%": 8.0,
+      "50%": 16.0,
+      "75%": 21.0,
+      "max": 31.0
+    },
+    "duration": {
+      "mean": 254.50762415689067,
+      "std": 234.9413141902852,
+      "min": 11.0,
+      "25%": 103.0,
+      "50%": 180.0,
+      "75%": 319.0,
+      "max": 1270.5599999999977
+    },
+    "campaign": {
+      "mean": 2.6880217260645995,
+      "std": 2.5804737479878614,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 2.0,
+      "75%": 3.0,
+      "max": 16.0
+    },
+    "pdays": {
+      "mean": 39.44126616655166,
+      "std": 96.18746487932573,
+      "min": -1.0,
+      "25%": -1.0,
+      "50%": -1.0,
+      "75%": -1.0,
+      "max": 370.0
+    },
+    "previous": {
+      "mean": 0.5270128887206998,
+      "std": 1.4656019848923463,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 0.0,
+      "75%": 0.0,
+      "max": 9.0
+    },
+    "deposit": {
+      "mean": 1.1169779400307192,
+      "std": 0.3213975746439039,
+      "min": 1.0,
+      "25%": 1.0,
+      "50%": 1.0,
+      "75%": 1.0,
+      "max": 2.0
+    }
+  }
+}

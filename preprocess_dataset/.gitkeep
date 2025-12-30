@@ -1,0 +1,19 @@
+# Ignore everything except the specified directories and files
+
+# Ignore all files and directories
+*
+
+# Do not ignore directories (to allow for further exclusions)
+!*/
+
+# Do not ignore .gitignore file itself
+!.gitignore
+
+# Do not ignore result directory and its contents
+!result/
+!result/*
+
+# Do not ignore notes directory and its contents
+!notes/
+!notes/*
+

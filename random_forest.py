@@ -42,6 +42,9 @@ def load_and_split_data():
     
     X = data.drop('deposit', axis=1)
     y = data['deposit']
+
+    # 🔄 将标签从{1, 2}转换为{0, 1}
+    y = y.replace({1: 0, 2: 1})  # 假设1=No, 2=Yes，可以根据实际情况调整
     
     print(f"数据集形状: {data.shape}")
     print(f"类别分布:\n{y.value_counts()}")

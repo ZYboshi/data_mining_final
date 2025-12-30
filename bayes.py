@@ -43,7 +43,8 @@ def load_and_split_data():
     
     X = data.drop('deposit', axis=1)
     y = data['deposit']
-    
+    # 🔥 关键修改：将{1, 2}转换为{0, 1}
+    y = y.replace({1: 0, 2: 1})  # 假设1=No Deposit, 2=Deposit
     print(f"数据集形状: {data.shape}")
     print(f"特征数量: {X.shape[1]}")
     print(f"类别分布:\n{y.value_counts()}")

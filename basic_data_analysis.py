@@ -362,6 +362,131 @@ class BasicDataAnalysis:
         # 在控制台也显示报告
         print("\n" + report_content)
     
+    def create_all_feature_distributions(self, data, max_categories=20):
+        """创建所有特征的分布柱状图，每行3个"""
+        print("\n" + "="*60)
+        print("📊 生成所有特征分布图 (每行3个)")
+        print("="*60)
+        
+        # 分离数值型和类别型特征
+        numeric_cols = data.select_dtypes(include=[np.number]).columns.tolist()
+        categorical_cols = data.select_dtypes(include=['object']).columns.tolist()
+        
+        # 排除目标变量（如果存在）
+        target_col = None
+        for col in ['deposit', 'Class', 'class', 'target', 'y']:
+            if col in data.columns:
+                target_col = col
+                break
+        
+        if target_col:
+            if target_col in numeric_cols:
+                numeric_cols.remove(target_col)
+            if target_col in categorical_cols:
+                categorical_cols.remove(target_col)
+        
+        all_features = categorical_cols + numeric_cols
+        
+        if not all_features:
+            print("⚠️  没有找到可绘制的特征")
+            return
+        
+        print(f"📈 共 {len(all_features)} 个特征需要绘图")
+        print(f"  - 类别型: {len(categorical_cols)} 个")
+        print(f"  - 数值型: {len(numeric_cols)} 个")
+        
+        # 计算需要的行数（每行3个）
+        n_features = len(all_features)
+        n_rows = (n_features + 2) // 3  # 向上取整
+        
+        # 设置画布大小
+        fig_width = 15
+        fig_height = 5 * n_rows
+        
+        # 创建大图
+        fig, axes = plt.subplots(n_rows, 3, figsize=(fig_width, fig_height))
+        fig.suptitle('所有特征分布图', fontsize=18, fontweight='bold', y=0.995)
+        
+        # 如果只有一行，axes不是二维数组，需要转换
+        if n_rows == 1:
+            axes = axes.reshape(1, -1) if hasattr(axes, 'reshape') else np.array([axes])
+        
+        # 扁平化axes便于迭代
+        axes_flat = axes.flatten()
+        
+        # 遍历所有特征并绘制
+        for idx, feature in enumerate(all_features):
+            ax = axes_flat[idx]
+            
+            # 处理类别型特征
+            if feature in categorical_cols:
+                value_counts = data[feature].value_counts().head(max_categories)
+                
+                # 如果类别太多，分组显示
+                if len(data[feature].unique()) > max_categories:
+                    value_counts = data[feature].value_counts().head(max_categories)
+                    title_suffix = f" (Top {max_categories})"
+                else:
+                    title_suffix = ""
+                
+                bars = ax.bar(range(len(value_counts)), value_counts.values, 
+                            color=plt.cm.Set3(idx % 12), alpha=0.8, edgecolor='black')
+                
+                ax.set_xticks(range(len(value_counts)))
+                ax.set_xticklabels(value_counts.index.astype(str), rotation=45, ha='right', fontsize=8)
+                
+                # 添加数值标签
+                for i, bar in enumerate(bars):
+                    height = bar.get_height()
+                    ax.text(bar.get_x() + bar.get_width()/2, height,
+                        f'{int(height)}', ha='center', va='bottom', fontsize=8)
+                
+                ax.set_title(f'{feature}{title_suffix}', fontsize=11, fontweight='bold')
+                ax.set_ylabel('频数', fontsize=9)
+                ax.tick_params(axis='both', labelsize=8)
+                
+            # 处理数值型特征
+            else:
+                # 使用直方图
+                data_values = data[feature].dropna()
+                
+                # 检查是否有足够的唯一值
+                unique_vals = data_values.nunique()
+                if unique_vals > 50:
+                    # 使用直方图
+                    ax.hist(data_values, bins=30, color=plt.cm.Set3(idx % 12), 
+                        alpha=0.8, edgecolor='black')
+                    ax.set_title(f'{feature} (直方图)', fontsize=11, fontweight='bold')
+                else:
+                    # 使用条形图显示分布
+                    value_counts = data_values.value_counts().head(20)
+                    bars = ax.bar(range(len(value_counts)), value_counts.values,
+                                color=plt.cm.Set3(idx % 12), alpha=0.8, edgecolor='black')
+                    ax.set_xticks(range(len(value_counts)))
+                    ax.set_xticklabels(value_counts.index.astype(str), rotation=45, ha='right', fontsize=8)
+                    ax.set_title(f'{feature} (离散值)', fontsize=11, fontweight='bold')
+                
+                ax.set_ylabel('频数', fontsize=9)
+                ax.tick_params(axis='both', labelsize=8)
+            
+            # 添加网格
+            ax.grid(True, alpha=0.3, axis='y', linestyle='--')
+        
+        # 隐藏多余的子图
+        for idx in range(len(all_features), len(axes_flat)):
+            axes_flat[idx].set_visible(False)
+        
+        plt.tight_layout()
+        
+        # 保存图表
+        chart_path = os.path.join(self.output_dir, 'figures', 'all_features_distribution.png')
+        plt.savefig(chart_path, dpi=150, bbox_inches='tight')
+        plt.close()
+        
+        print(f"✅ 所有特征分布图已保存到: {chart_path}")
+        print(f"   预览: {n_rows} 行 × 3 列 = {n_rows * 3} 个子图位置，实际使用 {len(all_features)} 个")
+
+    
     def run_full_analysis(self):
         """运行完整的分析流程"""
         print("="*60)
@@ -387,6 +512,9 @@ class BasicDataAnalysis:
         print("="*60)
         self.create_feature_type_chart(data)
         self.create_target_distribution_chart(data)
+        
+        # 🆕 新增：创建所有特征分布图
+        self.create_all_feature_distributions(data)
         
         # 5. 生成统计表格
         self.generate_statistics_tables(data)
@@ -417,4 +545,11 @@ def main():
         print("\n❌ 分析失败，请检查数据文件")
 
 if __name__ == "__main__":
+    # 设置matplotlib支持中文显示
+    try:
+        import matplotlib
+        matplotlib.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'DejaVu Sans']
+        matplotlib.rcParams['axes.unicode_minus'] = False
+    except:
+        pass
     main()

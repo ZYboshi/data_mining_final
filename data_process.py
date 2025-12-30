@@ -462,23 +462,24 @@ def main():
     save_data(data, './preprocess_dataset/bank_marketing_renamed.csv')
 
 
-    # # 步骤2：数据探索
-    # print("\n步骤2: 数据探索...")
-    # explore_data(data)
+    # 步骤2：数据探索
+    print("\n步骤2: 数据探索...")
+    explore_data(data)
     
-    # # 步骤3：生成列信息
-    # print("\n步骤3: 生成列信息...")
-    # generate_column_info(data)
+    # 步骤3：生成列信息
+    print("\n步骤3: 生成列信息...")
+    generate_column_info(data)
     
-    # # 步骤4：缺失值分析
-    # print("\n步骤4: 缺失值处理...")
-    # analyze_missing_data(data)
+    # 步骤4：缺失值分析
+    print("\n步骤4: 缺失值处理...")
+    analyze_missing_data(data)
     
-    # # 步骤5：缺失值处理
-    # print("\n步骤5: 缺失值处理...")
-    # data = handle_missing_values(data)
-    # generate_column_info(data, save_path="./dataset/column_info_aftermissing.json")
-    
+    # 步骤5：缺失值处理
+    print("\n步骤5: 缺失值处理...")
+    data = handle_missing_values(data)
+    generate_column_info(data, save_path="./dataset/column_info_aftermissing.json")
+    save_data(data, './dataset/bank_marketing_aftermissing.csv')
+
     # # 步骤6：标签编码
     # print("\n步骤6: 标签编码...")
     # data, label_encoders = simple_label_encoding(data)  # 现在会保存到dataset文件夹
